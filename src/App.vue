@@ -1,33 +1,47 @@
-<script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-	<div>
-		<a href="https://vitejs.dev" target="_blank">
-			<img src="/vite.svg" class="logo" alt="Vite logo">
-		</a>
-		<a href="https://vuejs.org/" target="_blank">
-			<img src="./assets/vue.svg" class="logo vue" alt="Vue logo">
-		</a>
-	</div>
-	<HelloWorld msg="Vite + Vue" />
+    <div class="main container px-0">
+        <BackImageContainer>
+            <carousel class="mainCarousel" dir="rtl">
+                <slide class="mainCarousel__view" v-for="slide in munes" :key="slide.name">
+                    <component :is="slide.component"></component>
+                </slide>
+
+                <template #addons="{ currentSlide }">
+                    <h1>{{currentSlide}}</h1>
+                    <pagination />
+                </template>
+            </carousel>
+        </BackImageContainer>
+    </div>
 </template>
 
-<style scoped>
-.logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
+<script setup lang="ts">
+import 'vue3-carousel/dist/carousel.css';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import BackImageContainer from './components/BackImageContainer.vue'
+import {ref, shallowRef} from "vue";
+import HomeSlide from "./components/homeSlide.vue"
+import StorySlide from "./components/StorySlide.vue"
+const homeSlide = shallowRef(HomeSlide)
+const storySlide = shallowRef(StorySlide)
+interface IMenu {
+    name: string;
+    component: any;
 }
+const munes = ref<IMenu[]>([
+    {name: '記念日', component: homeSlide},
+    {name: 'ストーリー', component: storySlide}
+])
+</script>
 
-.logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-}
+<style scoped lang="scss">
+.main {
 
-.logo.vue:hover {
-    filter: drop-shadow(0 0 2em #42b883aa);
+    .mainCarousel {
+
+        &__view {
+            height: 100vh;
+        }
+    }
 }
 </style>
