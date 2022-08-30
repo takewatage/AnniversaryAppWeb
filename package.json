@@ -3,6 +3,12 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://"
+    }
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -12,9 +18,12 @@
     "fix": "yarn format && yarn lint:script --fix"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.0",
+    "sass": "^1.54.5",
+    "vue": "^3.2.37",
+    "vue3-carousel": "^0.1.46"
   },
-  "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
