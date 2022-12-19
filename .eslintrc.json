@@ -16,7 +16,7 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "vue/html-indent": ["error", 4, {
+    "vue/html-indent": ["error", 2, {
       "attribute": 1,
       "baseIndent": 1,
       "closeBracket": 0,
@@ -25,10 +25,10 @@
     }],
     "vue/max-attributes-per-line": ["error", {
       "singleline": {
-        "max": 3
+        "max": 1
       },
       "multiline": {
-        "max": 3
+        "max": 1
       }
     }]
   }
