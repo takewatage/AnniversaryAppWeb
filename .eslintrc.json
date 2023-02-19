@@ -30,6 +30,12 @@
       "multiline": {
         "max": 1
       }
-    }]
+    }],
+    "vue/singleline-html-element-content-newline": ["error", {
+      "ignoreWhenNoAttributes": true,
+      "ignoreWhenEmpty": true,
+      "ignores": ["div", "pre", "textarea"]
+    }],
+    "vue/multi-word-component-names": "off"
   }
 }

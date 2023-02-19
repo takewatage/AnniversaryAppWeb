@@ -1,20 +1,47 @@
 <script setup lang="ts">
-import ClickCounter from './components/ClickCounter.vue'
+import { ref, provide } from 'vue'
+import useLoad, { useLoadKey } from './js/composables/useLoad'
+import LoadingDialog from "./js/components/Ui/LoadingDialog.vue";
+const theme = ref('light')
+
+provide(useLoadKey, useLoad())
+
 </script>
 
 <template>
-  <div class="main container px-0">
-    <h1>APP.vue</h1>
-    <ClickCounter />
-  </div>
+  <v-app :theme="theme">
+    <v-main class="main">
+      <div class="main-bg">
+        <Suspense>
+          <template #default>
+            <router-view />
+          </template>
+          <template #fallback>
+            <h1 class="text-red">LOAD.....</h1>
+          </template>
+          <template #error> エラー </template>
+        </Suspense>
+      </div>
+
+      <loading-dialog />
+    </v-main>
+  </v-app>
 </template>
 
 <style scoped lang="scss">
 .main {
-  .mainCarousel {
-    &__view {
-      height: 100vh;
-    }
+  .v-container {
+    max-width: 520px;
+    margin: auto;
+  }
+
+  &-bg {
+    background-image: url('../public/img/default_bg.jpeg');
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 </style>
