@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import {ref, computed, inject} from 'vue'
-import {LoadStore, useLoadKey} from "../../composables/useLoad";
+import { inject } from 'vue'
+import { LoadStore, useLoadKey } from '../../composables/useLoad'
 
-const { state, Loading } = inject(useLoadKey) as LoadStore
-
+const { state } = inject(useLoadKey) as LoadStore
 </script>
 
 <template>

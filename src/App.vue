@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref, provide } from 'vue'
 import useLoad, { useLoadKey } from './js/composables/useLoad'
-import LoadingDialog from "./js/components/Ui/LoadingDialog.vue";
+import LoadingDialog from './js/components/Ui/LoadingDialog.vue'
 const theme = ref('light')
 
 provide(useLoadKey, useLoad())
-
 </script>
 
 <template>
@@ -36,7 +35,7 @@ provide(useLoadKey, useLoad())
   }
 
   &-bg {
-    background-image: url('../public/img/default_bg.jpeg');
+    background-image: url('/img/default_bg.jpeg');
     width: 100%;
     height: 100%;
     background-size: cover;
