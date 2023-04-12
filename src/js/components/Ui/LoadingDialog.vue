@@ -2,27 +2,32 @@
 import { inject } from 'vue'
 import { LoadStore, useLoadKey } from '../../composables/useLoad'
 
-const { state } = inject(useLoadKey) as LoadStore
+const { isLoad } = inject(useLoadKey) as LoadStore
 </script>
 
 <template>
-  <v-dialog
-    v-model="state"
-    :scrim="false"
-    persistent
-    width="auto"
+  <div
+    v-if="isLoad"
+    class="load-overlay"
   >
     <v-progress-circular
-      color="#0095A8"
+      color="#FF80AB"
+      class="load-overlay__icon"
       indeterminate
     />
-  </v-dialog>
+  </div>
 </template>
 
 <style lang="scss">
-.card {
-  button {
-    font-size: 20px;
-  }
+.load-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #00000030;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

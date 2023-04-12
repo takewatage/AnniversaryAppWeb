@@ -1,11 +1,11 @@
 import { InjectionKey, ref } from 'vue'
 
 export default function useLoad() {
-  const state = ref<boolean>(false)
+  const isLoad = ref<boolean>(false)
   const loadCount = ref<number>(0)
 
-  const show = () => (state.value = true)
-  const hide = () => (state.value = false)
+  const show = () => (isLoad.value = true)
+  const hide = () => (isLoad.value = false)
 
   const onLoading = async (
     call = async () => {
@@ -13,10 +13,10 @@ export default function useLoad() {
     },
     errF = async (_e: unknown) => {
       // do nothing.
-        console.error(_e)
+      console.error(_e)
     }
   ) => {
-    state.value = true
+    isLoad.value = true
     loadCount.value++
     try {
       await call()
@@ -34,13 +34,13 @@ export default function useLoad() {
     } finally {
       loadCount.value--
       if (!loadCount.value) {
-        state.value = false
+        isLoad.value = false
       }
     }
   }
 
   return {
-    state,
+    isLoad,
     show,
     hide,
     onLoading,

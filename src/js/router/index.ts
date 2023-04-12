@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/pages/Home.vue'
 import Second from '@/pages/Second.vue'
-import LoginPage from '@/pages/auth/LoginPage.vue'
+import WelcomePage from '@/pages/Welcome.vue'
 
 const routes = [
   { path: '/', name: 'Home', component: Home },
   { path: '/second', name: 'Second', component: Second },
-  { path: '/login', name: 'Login', component: LoginPage },
+  { path: '/welcome', name: 'Welcome', component: WelcomePage },
 ]
 
 const router = createRouter({
@@ -16,8 +16,8 @@ const router = createRouter({
 
 router.beforeEach(async (to) => {
   const isAuthenticated = false
-  if (!isAuthenticated && to.name !== 'Login') {
-    return { name: 'Login' }
+  if (!isAuthenticated && to.name !== 'Welcome') {
+    return { name: 'Welcome' }
   }
 })
 
