@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import { LoadStore, useLoadKey } from '../../composables/useLoad'
+import { LoadStore, useLoadKey } from '@/js/composables/useLoad'
 
 const { isLoad } = inject(useLoadKey) as LoadStore
 </script>

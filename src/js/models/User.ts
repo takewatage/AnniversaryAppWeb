@@ -1,24 +1,14 @@
 import { IIndexable, Model } from '@team-decorate/alcts'
 import { useVuelidate, Validation } from '@vuelidate/core'
-import { required, email, helpers } from '@vuelidate/validators'
 import { Ref, ref } from 'vue'
+import { USER_RULES } from '@/js/composables/useRule'
 
-const FILLABLE = ['id', 'name', 'email', 'password', 'roomId']
+const FILLABLE = ['uid', 'name', 'email', 'password', 'roomId']
 
 const PRESENTS = ['type']
 
-export const USER_RULES = {
-  email: {
-    required: helpers.withMessage('メールアドレスは必須です', required),
-    email: helpers.withMessage('正しいメールアドレスを入力してください', email),
-  },
-  password: {
-    required: helpers.withMessage('パスワードは必須です', required),
-  },
-}
-
 export default class User extends Model {
-  id = 0
+  uid = ''
   name = ''
   email = ''
   password = ''
