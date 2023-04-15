@@ -1,6 +1,7 @@
 /** @format */
 
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './js/router'
 
@@ -18,7 +19,6 @@ const vuetify = createVuetify({
   directives,
 })
 
-const app = createApp(App).use(vuetify)
+const app = createApp(App).use(router).use(vuetify).use(createPinia())
 
-app.use(router)
 app.mount('#app')
